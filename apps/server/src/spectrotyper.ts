@@ -1,6 +1,6 @@
-import { FREQ_MAX, FREQ_MIN, SAMPLE_RATE, SAMPLES_PER_COL } from "@spectrotyper/shared";
-import { fonts, renderPixels } from "js-pixel-fonts";
-import wav from "node-wav";
+import { FREQ_MAX, FREQ_MIN, SAMPLE_RATE, SAMPLES_PER_COL } from '@spectrotyper/shared';
+import { fonts, renderPixels } from 'js-pixel-fonts';
+import wav from 'node-wav';
 
 const GLYPH_HEIGHT: number = fonts.sevenPlus.lineHeight; // 7 rows
 
@@ -17,7 +17,7 @@ function synthesize(pixels: number[][]): Float32Array {
 	for (let col = 0; col < numCols; col++) {
 		// Each lit pixel in this column is a frequency we want to play simultaneously.
 		const activeFreqs = pixels
-			.map((row, i) => row[col] === 1 ? rowToFreq(i) : null)
+			.map((row, i) => (row[col] === 1 ? rowToFreq(i) : null))
 			.filter((f): f is number => f !== null);
 
 		if (activeFreqs.length === 0) continue;
@@ -34,7 +34,7 @@ function synthesize(pixels: number[][]): Float32Array {
 
 	// Scale so the loudest sample hits 90% volume — as loud as possible without clipping.
 	const peak = pcm.reduce((max, v) => Math.max(max, Math.abs(v)), 0);
-	if (peak > 0) pcm.forEach((_, i) => pcm[i] *= 0.9 / peak);
+	if (peak > 0) pcm.forEach((_, i) => (pcm[i] *= 0.9 / peak));
 
 	return pcm;
 }

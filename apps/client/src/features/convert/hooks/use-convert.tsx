@@ -1,14 +1,14 @@
-import api from "@/lib/api";
-import { Dispatch, SetStateAction, useCallback, useEffect, useState } from "react";
+import api from '@/lib/api';
+import { Dispatch, SetStateAction, useCallback, useEffect, useState } from 'react';
 
 const useConvert = (setBlob: Dispatch<SetStateAction<Blob | undefined>>) => {
-	const [text, setText] = useState("");
+	const [text, setText] = useState('');
 	const [loading, setLoading] = useState(false);
 	const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
 
 	const convert = useCallback(async () => {
 		try {
-			const res = await api.post("/convert", { text }, { responseType: "blob" });
+			const res = await api.post('/convert', { text }, { responseType: 'blob' });
 			const url = URL.createObjectURL(res.data);
 			setAudio(new Audio(url));
 			setBlob(res.data);

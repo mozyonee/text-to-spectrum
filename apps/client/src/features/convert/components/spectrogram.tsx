@@ -1,9 +1,11 @@
-"use client";
+'use client';
 
-import { useEffect, useRef } from "react";
-import { render } from "../utils/functions";
+import { useEffect, useRef } from 'react';
+import { render } from '../utils/functions';
 
-interface Props { blob?: Blob; }
+interface Props {
+	blob?: Blob;
+}
 
 export default function Spectrogram({ blob }: Props) {
 	const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -11,7 +13,7 @@ export default function Spectrogram({ blob }: Props) {
 	useEffect(() => {
 		if (!blob || !canvasRef.current) return;
 		const canvas = canvasRef.current;
-		const ctx = canvas.getContext("2d")!;
+		const ctx = canvas.getContext('2d')!;
 
 		render(canvas, ctx, blob);
 	}, [blob]);
