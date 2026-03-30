@@ -30,7 +30,7 @@ export const render = async (canvas: HTMLCanvasElement, ctx: CanvasRenderingCont
 			}
 
 			const v = Math.min(1, Math.sqrt(re * re + im * im) / SAMPLES_PER_COL * 20);
-			ctx.fillStyle = `hsl(${(1 - v) * 240},100%,${v * 50}%)`;
+			ctx.fillStyle = `hsl(${(1 - v) * 90},100%,${v * 50}%)`;
 			ctx.fillRect(col * horizontalScale, row, horizontalScale, 1);
 		}
 	}

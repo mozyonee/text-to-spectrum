@@ -18,7 +18,7 @@ export default function Spectrogram({ blob }: Props) {
 
 	if (!blob) return null;
 	return (
-		<div className="w-full max-w-2xl rounded-lg border border-zinc-200 overflow-x-auto dark:border-zinc-700 p-2">
+		<div className="w-full max-w-2xl border border-zinc-700 overflow-x-auto p-2">
 			<canvas ref={canvasRef} className="block" style={{ height: 75 }} />
 		</div>
 	);
