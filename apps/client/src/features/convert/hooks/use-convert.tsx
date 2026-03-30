@@ -23,7 +23,7 @@ const useConvert = (setBlob: Dispatch<SetStateAction<Blob | undefined>>) => {
 
 		const timer = setTimeout(convert, 250);
 		return () => clearTimeout(timer);
-	}, [convert, text]);
+	}, [text, convert]);
 
 	return {
 		loading,
